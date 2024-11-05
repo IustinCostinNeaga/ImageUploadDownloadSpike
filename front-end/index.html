@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<img src="http://localhost:8080/api/file?name=Immagine.jpeg" id="image"/>
+</body>
+<script>
+  let image = document.getElementById("image")
+  fetch("http://localhost:8080/api/file?name=Immagine.jpeg")
+    .then(response => {
+      response.json().then(it => {
+        console.log(it.image)
+        image.setAttribute("src", "data:image/jpeg;base64," + it.image)
+      })
+    }
+  )
+</script>
+</html>
